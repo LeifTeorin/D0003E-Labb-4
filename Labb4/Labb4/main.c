@@ -2,7 +2,7 @@
  * Labb4.c
  *
  * Created: 2021-02-22 10:36:20
- * Author : hjall
+ * Author : hjall and crill
  */ 
 
 #include <avr/io.h>
