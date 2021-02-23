@@ -1,9 +1,12 @@
 #include <avr/io.h>
+#include "Pulsegenerator.h"
 
-void Pulse(int x, int f)
+#include <avr/interrupt.h>
+
+void Pulse(Pulsegenerator *self)
 {
-	x = !x;
-	if(x)
+	self->boo = !(self->boo);
+	if(self->boo)
 	{
 		//send io 3.3V
 	}
@@ -13,3 +16,4 @@ void Pulse(int x, int f)
 	}
 	//Pulse with a timer
 }
+

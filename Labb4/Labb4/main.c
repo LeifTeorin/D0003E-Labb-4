@@ -6,6 +6,9 @@
  */ 
 
 #include <avr/io.h>
+#include "GUI.h"
+#include "Pulsegenerator.h"
+#include "Writer.h"
 
 
 int main(void)
