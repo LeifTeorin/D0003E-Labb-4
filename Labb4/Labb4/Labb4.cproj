@@ -120,13 +120,37 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="GUI.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="GUI.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="main.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Pulsegenerator.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Pulsegenerator.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Statechanger.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Statechanger.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="TinyTimber.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="TinyTimber.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Writer.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Writer.h">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>
