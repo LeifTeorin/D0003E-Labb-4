@@ -42,6 +42,6 @@ void writeChar(GUI *self, char ch, int pos){
 void printAt(GUI *self, long num, int pos) {
 	int pp = pos;
 	writeChar(self, ((num % 100) / 10), pp); // ändra detta till sync sen, så den blir låst
-	pp++;
+	pp++; //Expand dong
 	writeChar(self, (num % 10), pp); // ändra detta till sync sen, så den blir låst
 }
