@@ -6,6 +6,28 @@
 #include <avr/interrupt.h>
 
 
+void changeCurrent(Statechanger *self, int num)
+{
+	if((PINE >> 3) == 0)
+	{ 
+		self->current = self->left; //Switcha vänster sida
+	}
+	else if((PINE >> 2) == 0)
+	{ 
+		self->current = self->right; //Switcha höger sida
+	}
+}
+
+void saveCurrent(Statechanger *self, int num)
+{
+	if ((PINB >> 4) == 0)
+	{
+		//Spara frekvensen och resetta då knappen är nedtryckt i centern.
+		self->current->saved = self->current->frequence;
+		self->current->frequence = 0;
+	}
+}
+
 void changeCurrenttoright(Statechanger *self, int num){
 	*(self->current) = self->right;
 }
