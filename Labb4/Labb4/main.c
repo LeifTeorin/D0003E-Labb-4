@@ -16,6 +16,10 @@ int main(void)
     /* Replace with your application code */
     while (1) 
     {
+    	//Install joystick left right
+    	//Install joystick up down 
+
+    	//return tinytimber(GUI, update, 0)
     }
 }
 
