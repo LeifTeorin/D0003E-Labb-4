@@ -33,7 +33,7 @@ void decreaseCurrent(Statechanger *self, int num){
 		ASYNC(self->current, decrease, num); // vi tar och spawnar en decrease
 		//decrease(self->current, num);
 		if(self->current->pos == 0){
-			SYNC(&(self->current), printLeft, self->current->frequence); // synka så att inget går fel
+			SYNC(&(self->current), printLeft, self->current->frequence); // synka sï¿½ att inget gï¿½r fel
 		}else{
 			SYNC(&(self->current), printRight, self->current->frequence);
 		}
