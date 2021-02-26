@@ -6,8 +6,12 @@
 
 typedef struct{
 	Object super;
-	
 }Writer;
 
 #define initWriter()\
 			{initObject()}
+		
+void writeHighToPort(Writer *self, int bitnr);
+void writeLowToPort(Writer *self, int bitnr);
+		
+#endif

@@ -2,21 +2,40 @@
 #include "Pulsegenerator.h"
 #include "Statechanger.h"
 #include "TinyTimber.h"
-
+#include "GUI.h"
 #include <avr/interrupt.h>
 
-void changeCurrent(Statechanger *self, int num){
-	
+
+void changeCurrenttoright(Statechanger *self, int num){
+	*(self->current) = self->right;
+}
+
+void changeCurrenttoleft(Statechanger *self, int num){
+	*(self->current) = self->left;
 }
 
 void increaseCurrent(Statechanger *self, int num){
 	while((PINB >> 6)==0){
-		increase(self->current, num);
+		ASYNC(self->current, increase, (self->current, num));
+		if(self->current->pos == 0){
+			SYNC(&(self->current), printLeft, self->current->frequence);
+		}else{
+			SYNC(&(self->current), printRight, self->current->frequence);
+		}
+		//increase(self->current, num);
+		//ASYNC(&(self->ui), printAt, (&(self->ui), self->current->frequence, self->current->pos));
+		//printAt(&(self->ui), self->current->frequence, current->pos);
 	}
 }
 
 void decreaseCurrent(Statechanger *self, int num){
 	while((PINB >> 7) == 0){
-		decrease(self->current, num);
+		ASYNC(self->current, decrease, num); // vi tar och spawnar en decrease
+		//decrease(self->current, num);
+		if(self->current->pos == 0){
+			SYNC(&(self->current), printLeft, self->current->frequence); // synka så att inget går fel
+		}else{
+			SYNC(&(self->current), printRight, self->current->frequence);
+		}
 	}
 }

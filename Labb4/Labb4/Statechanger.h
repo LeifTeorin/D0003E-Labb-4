@@ -3,16 +3,21 @@
 
 #include "Pulsegenerator.h"
 #include "TinyTimber.h"
+#include "GUI.h"
 
 typedef struct{
 	Object super;
-	Pulsegenerator left;
-	Pulsegenerator right;
-	*Pulsegenerator current;
+	struct GUI *ui;
+	struct Pulsegenerator *left;
+	struct Pulsegenerator *right;
+	struct Pulsegenerator *current;
 }Statechanger;
 
-#define initStatechanger(Pulsegenerator left, Pulsegenerator right)\
-			{initObject(), left, right, &left}
+#define initStatechanger(ui, left, right)\
+			{initObject(), ui, left, right, left}
 void increaseCurrent(Statechanger *self, int num);
 void decreaseCurrent(Statechanger *self, int num);
-void changeCurrent(Statechanger *self, int num);
+void changeCurrenttoright(Statechanger *self, int num);
+void changeCurrenttoleft(Statechanger *self, int num);
+
+#endif

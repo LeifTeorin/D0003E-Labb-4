@@ -6,20 +6,16 @@
 
 typedef struct{
 	Object super;
-	int[] characters;
+//	int[] characters;
 }GUI;
 
 #define initGUI()\
-		{initObject(), {
-			0x1551,		// 0
-			0x0118,		// 1
-			0x1e11,		// 2
-			0x1b11,		// 3
-			0x0b50,		// 4
-			0x1b41,		// 5
-			0x1f41,		// 6
-			0x4009,		// 7
-			0x1f51,		// 8
-			0x1b51,		// 9
-		}
-	}
+		{initObject()}
+	
+void printAt(GUI *self, long num, int pos);
+void writeChar(GUI *self, char ch, int pos);
+void init_program(GUI *self);
+void printLeft(GUI *self, long num);
+void printRight(GUI *self, long num);
+
+#endif

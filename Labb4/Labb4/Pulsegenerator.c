@@ -1,30 +1,36 @@
 #include <avr/io.h>
 #include "Pulsegenerator.h"
 #include "TinyTimber.h"
+#include "GUI.h"
+#include "Writer.h"
 
 #include <avr/interrupt.h>
 
 void Pulse(Pulsegenerator *self, int num){
 	self->boo = !(self->boo);
+	if(self->frequence == 0){
+		AFTER(SEC(1), self, Pulse, num);
+		return;
+	}else{
+		AFTER(USEC(1000000/self->frequence), self, Pulse, num);
+		//AFTER(SEC(1), self, Pulse, num);
+	}
 	if(self->boo)
 	{
-		//send io 3.3V with SYNC to writer
+		SYNC(self->shakespear, writeHighToPort, self->bitnr);
 	}else{
-		//send io 0V with SYNC to writer
+		SYNC(self->shakespear, writeLowToPort, self->bitnr);
 	}
-	//Pulse with a timer
 }
 
 void increase(Pulsegenerator *self, int num){
 	if(self->frequence < 99){
 		self->frequence +=1;
-		// härifrån anropas GUI
 	}
 }
 
 void decrease(Pulsegenerator *self, int num){
 	if(self->frequence > 0){
 		(self->frequence)--;
-		// härifrån anropas GUI
 	}
 }
