@@ -19,5 +19,6 @@ typedef struct{
 void increase(Pulsegenerator *self, int num);
 void decrease(Pulsegenerator *self, int num);
 void Pulse(Pulsegenerator *self, int num);
+void save(Pulsegenerator *self, int num);
 
 #endif

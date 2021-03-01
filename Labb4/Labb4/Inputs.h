@@ -14,5 +14,6 @@ typedef struct {
 		
 
 void checkInputs(Inputs *self, int num);
+void checkSideways(Inputs *self, int num);
 
 #endif

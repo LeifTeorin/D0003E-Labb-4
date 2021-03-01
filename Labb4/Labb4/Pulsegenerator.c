@@ -34,3 +34,12 @@ void decrease(Pulsegenerator *self, int num){
 		(self->frequence)--;
 	}
 }
+
+void save(Pulsegenerator *self, int num){
+	if(self->frequence>0){
+		self->saved = self->frequence;
+		self->frequence = 0;
+	}else{
+		self->frequence = self->saved;
+	}
+}

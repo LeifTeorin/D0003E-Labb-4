@@ -18,23 +18,19 @@ GUI ui = initGUI();
 Writer writer = initWriter();
 Pulsegenerator left = initPulsegenerator(0, 4, &writer);
 Pulsegenerator right = initPulsegenerator(4, 6, &writer);
-//Statechanger coupdetat = initStatechanger(ui, left, right);
-//Inputs handler = initInputs(coupdetat);
+Statechanger coupdetat = initStatechanger(&ui, &left, &right);
+Inputs handler = initInputs(&coupdetat);
 
 
 int main(void)
 {
-	init_program(&ui);
-	increase(&right, 0);
-	increase(&left, 0);
-	increase(&left, 0);
-	increase(&left, 0);
-	increase(&left, 0);
-	increase(&left, 0);
-	tinytimber(&left, Pulse, 0);
-	//ASYNC(&right, Pulse, 0);
-	//ASYNC(&left, Pulse, 0);
-//	Pulse(&left, 0);
+//	init_program(&ui);
+//	increase(&right, 0);
+//	increase(&left, 0);
+	INSTALL(&handler, checkInputs, IRQ_PCINT1);
+	INSTALL(&handler, checkSideways, IRQ_PCINT0);
+//	tinytimber(&left, Pulse, 0);
+
 	
 	
 	
