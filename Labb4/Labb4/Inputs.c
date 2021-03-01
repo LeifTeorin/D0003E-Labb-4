@@ -1,5 +1,6 @@
 #include "Inputs.h"
 #include "Statechanger.h"
+#include "TinyTimber.h"
 #include <avr/io.h>
 
 void checkInputs(Inputs *self, int num){
@@ -17,5 +18,10 @@ void checkInputs(Inputs *self, int num){
 
 void checkSideways(Inputs *self, int num){
 	// anropa changecurrent
-	
+	if((PINE&0x04)==0){
+		SYNC(self->coup, changeCurrenttoleft, 0);
+	}
+	if((PINE&0x08)==0){
+		SYNC(self->coup, changeCurrenttoright, 0);
+	}
 }

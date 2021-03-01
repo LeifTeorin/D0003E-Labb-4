@@ -62,3 +62,10 @@ void decreaseCurrent(Statechanger *self, int num){
 		}
 	}
 }
+
+void startup(Statechanger *self, int num){
+
+	SYNC(self->ui, init_program, 0);
+	SYNC(self->left, Pulse, 0);
+	SYNC(self->right, Pulse, 0);
+}

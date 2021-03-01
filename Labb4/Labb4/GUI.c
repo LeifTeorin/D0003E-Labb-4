@@ -73,8 +73,8 @@ void printRight(GUI *self, long num) {
 void init_program(GUI *self){
 	LCDCRA |= 0x80; // LCD enable
 	LCDCRB = 0xb7; // 1/3 bias och 1/4 duty, asynk-klockan anvï¿½nds och 25 segment anvï¿½nds
-	LCDCCR |= 15; // sï¿½tter kontrastkontrollen till 3,35 V
-	LCDFRR = 7;	// sï¿½tter prescalern och ger framerate 32 Hz
+	LCDCCR |= 15; // sätter kontrastkontrollen till 3,35 V
+	LCDFRR = 7;	// sätter prescalern och ger framerate 32 Hz
 	
 	EIMSK = 0x80;
 	PCMSK1 = 0x80;

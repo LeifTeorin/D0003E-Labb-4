@@ -25,13 +25,20 @@ Inputs handler = initInputs(&coupdetat);
 int main(void)
 {
 //	init_program(&ui);
-//	increase(&right, 0);
-//	increase(&left, 0);
+	increase(&right, 0);
+	increase(&left, 0);
+	increase(&left, 0);
+	increase(&left, 0);
 	INSTALL(&handler, checkInputs, IRQ_PCINT1);
 	INSTALL(&handler, checkSideways, IRQ_PCINT0);
-//	tinytimber(&left, Pulse, 0);
-
-	
+//	startup(&coupdetat, 0);
+	tinytimber(&left, Pulse, 0);
+//	tinytimber(&right, Pulse, 0);
+//	tinytimber(&coupdetat, startup, 0);
+//	tinytimber(&ui, init_program, 0);
+//	increase(&right, 0);
+//	increase(&left, 0);
+//	increase(&left, 0);
 	
 	
     while (1) 

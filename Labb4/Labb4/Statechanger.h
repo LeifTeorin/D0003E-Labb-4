@@ -21,5 +21,6 @@ void changeCurrenttoright(Statechanger *self, int num);
 void changeCurrenttoleft(Statechanger *self, int num);
 void changeCurrent(Statechanger *self, int num);
 void saveCurrent(Statechanger *self, int num);
+void startup(Statechanger *self, int num);
 
 #endif
