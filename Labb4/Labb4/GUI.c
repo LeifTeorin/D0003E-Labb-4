@@ -1,5 +1,6 @@
 #include "TinyTimber.h"
 #include "GUI.h"
+#include "Pulsegenerator.h"
 
 #include <avr/io.h>
 #include <avr/portpins.h>
@@ -60,32 +61,42 @@ void printAt(GUI *self, long num, int pos) {
 	writeChar(self, (num % 10), pp); // ï¿½ndra detta till sync sen, sï¿½ den blir lï¿½st
 }
 
-void printLeft(GUI *self, long num) {
+void printLeft(GUI *self, int num) {
 	writeChar(self, ((num % 100) / 10), 0); // ï¿½ndra detta till sync sen, sï¿½ den blir lï¿½st
 	writeChar(self, (num % 10), 1); // ï¿½ndra detta till sync sen, sï¿½ den blir lï¿½st
 }
 
-void printRight(GUI *self, long num) {
+void printRight(GUI *self, int num) {
 	writeChar(self, ((num % 100) / 10), 4); // ï¿½ndra detta till sync sen, sï¿½ den blir lï¿½st
 	writeChar(self, (num % 10), 5); // ï¿½ndra detta till sync sen, sï¿½ den blir lï¿½st
 }
 
 void init_program(GUI *self){
 	LCDCRA |= 0x80; // LCD enable
+//	LCDCRB = (1<<LCDMUX0)|(1<<LCDMUX1)|(1<<LCDPM2)|(1<<LCDPM1)|(1<<LCDPM0);
 	LCDCRB = 0xb7; // 1/3 bias och 1/4 duty, asynk-klockan anvï¿½nds och 25 segment anvï¿½nds
 	LCDCCR |= 15; // sätter kontrastkontrollen till 3,35 V
 	LCDFRR = 7;	// sätter prescalern och ger framerate 32 Hz
 	
-	EIMSK = 0x80;
-	PCMSK1 = 0x80;
+	PORTB |= (1<<PB7)|(1<<PB6)|(1<<PB4);
+	PORTE |= (1<<PE2)|(1<<PE3);
+	DDRB = (1<<DDB5)|(1<<DDB3)|(1<<DDB2)|(1<<DDB1)|(1<<DDB0);
+	DDRE = (1<<DDE6)|(1<<DDE4);
+	
+	EIMSK = (1<<PCIE1)|(1<<PCIE0);
+	PCMSK0 = (1<<PCINT3)|(1<<PCINT2);
+	PCMSK1 = (1<<PCINT15)|(1<<PCINT14)|(1<<PCINT12);
+//	PCMSK1 = 0x80;
 	TCCR1A = 0xC0;
 	TCCR1B = 0x18;
 	
 	CLKPR = 0x80;
 	CLKPR = 0x00;
 	
-	SYNC(self, printRight, 0);
-	SYNC(self, printLeft, 0);
-//	printLeft(self, 0);
-//	printRight(self, 0);
+	
+//	SYNC(self, printRight, 0);
+//	SYNC(self, printLeft, 0);
+	printLeft(self, 0);
+	printRight(self, 0);
+	LCDDR0 |= 0x40;
 }

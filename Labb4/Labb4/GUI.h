@@ -15,7 +15,7 @@ typedef struct{
 void printAt(GUI *self, long num, int pos);
 void writeChar(GUI *self, char ch, int pos);
 void init_program(GUI *self);
-void printLeft(GUI *self, long num);
-void printRight(GUI *self, long num);
+void printLeft(GUI *self, int num);
+void printRight(GUI *self, int num);
 
 #endif

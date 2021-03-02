@@ -3,17 +3,22 @@
 
 #include "Statechanger.h"
 #include "TinyTimber.h"
+#include "Pulsegenerator.h"
 
 typedef struct {
 	Object super;
 	struct Statechanger *coup;
+	struct Pulsegenerator *left;
+	struct Pulsegenerator *right;
+	struct Pulsegenerator *current;
 	} Inputs;
 
-#define initInputs(coup)\
-	{initObject(), coup}
+#define initInputs(coup, left, right)\
+	{initObject(), coup, left, right, left}
 		
 
-void checkInputs(Inputs *self, int num);
-void checkSideways(Inputs *self, int num);
+void checkInputs(Inputs *self);
+void checkSideways(Inputs *self);
+void initialize(Inputs *self);
 
 #endif
