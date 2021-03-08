@@ -7,14 +7,14 @@
 
 typedef struct {
 	Object super;
-	struct Statechanger *coup;
+//	struct Statechanger *coup;
 	struct Pulsegenerator *left;
 	struct Pulsegenerator *right;
 	struct Pulsegenerator *current;
 	} Inputs;
 
-#define initInputs(coup, left, right)\
-	{initObject(), coup, left, right, left}
+#define initInputs(left, right)\
+	{initObject(), left, right, left}
 		
 
 void checkInputs(Inputs *self);

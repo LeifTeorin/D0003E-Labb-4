@@ -52,8 +52,9 @@ void writeChar(GUI *self, char ch, int pos){
 	}
 }
 
-void printAt(GUI *self, long num, int pos) {
-	int pp = pos;
+void printAt(GUI *self, int args[]) {
+	int pp = args[0]; // index 0 är position
+	int num = args[1]; // index 1 är numret
 	//SYNC(self, writeChar, (((num % 100) / 10), pp));
 	writeChar(self, ((num % 100) / 10), pp); // ï¿½ndra detta till sync sen, sï¿½ den blir lï¿½st
 	pp++;
@@ -96,7 +97,11 @@ void init_program(GUI *self){
 	
 //	SYNC(self, printRight, 0);
 //	SYNC(self, printLeft, 0);
-	printLeft(self, 0);
-	printRight(self, 0);
+	int argone[2] = {0, 0};
+	int argtwo[2] = {4, 0}; 
+	printAt(self, argone);
+	printAt(self, argtwo);
+//	printLeft(self, 0);
+//	printRight(self, 0);
 	LCDDR0 |= 0x40;
 }

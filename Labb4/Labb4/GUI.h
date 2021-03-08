@@ -12,8 +12,8 @@ typedef struct{
 #define initGUI()\
 		{initObject()}
 	
-void printAt(GUI *self, long num, int pos);
-void writeChar(GUI *self, char ch, int pos);
+void printAt(GUI *self, int args[]);
+//void writeChar(GUI *self, char ch, int pos);
 void init_program(GUI *self);
 void printLeft(GUI *self, int num);
 void printRight(GUI *self, int num);

@@ -18,8 +18,7 @@ GUI ui = initGUI();
 Writer writer = initWriter();
 Pulsegenerator left = initPulsegenerator(0, 4, &writer, &ui);
 Pulsegenerator right = initPulsegenerator(4, 6, &writer, &ui);
-Statechanger coupdetat = initStatechanger(&ui, &left, &right);
-Inputs handler = initInputs(&coupdetat, &left, &right);
+Inputs handler = initInputs(&left, &right);
 
 
 int main(void)
